@@ -1,0 +1,42 @@
+{
+  "name": "OccupancyDB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Austin-Harris/CUIP-Dashboard.git"
+  },
+  "keywords": [
+    "smart",
+    "city",
+    "dashboard",
+    "mlk",
+    "smart",
+    "corridor",
+    "chattanooga"
+  ],
+  "author": "Austin Harris, Jose Stovall",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Austin-Harris/CUIP-Dashboard/issues"
+  },
+  "homepage": "https://github.com/Austin-Harris/CUIP-Dashboard#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "mongoose": "^5.6.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1"
+  }
+}

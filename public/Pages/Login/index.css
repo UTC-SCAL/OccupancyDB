@@ -1,0 +1,67 @@
+.ui.vertical.stripe h3 {
+    font-size: 2em
+}
+
+.ui.vertical.stripe .floated.image {
+    clear: both
+}
+
+.ui.vertical.stripe p {
+    font-size: 1.25em
+}
+
+.quote.stripe.segment {
+    padding: 0
+}
+
+.ui.slider.checkbox.inverted.checked label, .ui.slider.checkbox.checked.inverted label {
+    color: #eee !important;
+}
+
+.ui.slider.checkbox.inverted.checked label:hover, .ui.slider.checkbox.checked.inverted label:hover, .ui.slider.checkbox input:focus:checked~label {
+    color: #fff !important;
+}
+
+h2.ui.header {
+    font-size: 2em;
+    filter: none!important;
+    -webkit-filter: none!important
+}
+
+h1.ui.header {
+    font-size: 4em;
+    filter: none!important;
+    -webkit-filter: none!important
+}
+
+.item {
+    cursor: pointer
+}
+
+body.inverted {
+    color: #eee;
+    background-color: #252525
+}
+
+.ui.stacked.segment::after {
+    display: None;
+}
+
+.ui.fixed.menu+.ui.grid {
+    margin-top: 30vh;
+}
+
+.column {
+    max-width: 66vw;
+    width: 66vw;
+    margin: auto;
+}
+
+.ui.container{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+body {
+    display: flex;
+}

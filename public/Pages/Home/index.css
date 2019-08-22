@@ -1,0 +1,217 @@
+.ui.red.basic.label.inverted {
+    background-color: #212529 !important;
+}
+
+.ui.toggle.checkbox.inverted>label::before, .ui.toggle.checkbox input:focus~.box:before, .ui.toggle.checkbox input:focus~label:before {
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+.leaflet-bottom.leaflet-right {
+    display: none !important
+}
+
+.masthead h2 {
+    font-size: 1.7em;
+    font-weight: normal
+}
+
+.ui.menu {
+    margin-bottom: 0px !important;
+}
+
+.ui.vertical.stripe h3 {
+    font-size: 2em
+}
+
+.ui.vertical.stripe .floated.image {
+    clear: both
+}
+
+.ui.vertical.stripe p {
+    font-size: 1.25em
+}
+
+.quote.stripe.segment {
+    padding: 0
+}
+
+h2.ui.header {
+    font-size: 2em;
+    filter: none !important;
+    -webkit-filter: none !important
+}
+
+h1.ui.header {
+    font-size: 4em;
+    filter: none !important;
+    -webkit-filter: none !important
+}
+
+.item {
+    cursor: pointer
+}
+
+body {
+    /* 
+        This prevents the page from being scrollable,
+        but fixes the issue with being able to scroll 
+        into #floatingmenu
+    */
+    overflow: hidden;
+}
+
+.ui.slider.checkbox.inverted.checked label, .ui.slider.checkbox.checked.inverted label {
+    color: #eee !important;
+}
+
+.ui.slider.checkbox.inverted.checked label:hover, .ui.slider.checkbox.checked.inverted label:hover, .ui.slider.checkbox input:focus:checked~label {
+    color: #fff !important;
+}
+
+body.inverted {
+    color: #eee;
+    background-color: #252525
+}
+
+#osm_map {
+    height: 93.5vh;
+    width: 100vw
+}
+
+#floatingmenu {
+    width: 100vw;
+    height: 75vh;
+    position: absolute;
+    bottom: -74vh;
+    z-index: 99999;
+    margin-left: 0px !important;
+    background: #FFF;
+    -webkit-transition: all 700ms ease;
+    -moz-transition: all 700ms ease;
+    -ms-transition: all 700ms ease;
+    -o-transition: all 700ms ease;
+    transition: all 700ms ease
+}
+
+#floatingmenu:hover, #floatingmenu.hovered {
+    box-shadow: 0px -5px rgba(0, 0, 0, 0.05);
+    bottom: -4vh;
+    -webkit-transition: all 700ms ease;
+    -moz-transition: all 700ms ease;
+    -ms-transition: all 700ms ease;
+    -o-transition: all 700ms ease;
+    transition: all 700ms ease
+}
+
+.carousel-control-next, .carousel-control-prev {
+    width: 5%;
+}
+
+#listcontainer {
+    position: relative;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#listcontainer ul {
+    width: 900px;
+    width: auto;
+    float: left;
+    color: FFF
+}
+
+#wazecontainer {
+    width: 400px;
+    height: 100px
+}
+
+#masthead_text>.ui.header {
+    color: #EEE !important;
+    text-shadow: -1px -1px 0 #252525, 1px -1px 0 #252525, -1px 1px 0 #252525, 1px 1px 0 #252525 !important
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap
+}
+
+#streamcontainer {
+    margin-left: 40px;
+    margin-top: 30px
+}
+
+#chartcontainer {
+    margin-left: 25px;
+    margin-top: 20px;
+    width: 23%
+}
+
+i.huge.angle.right.icon {
+    margin-top: 50%;
+}
+
+i.huge.angle.right.icon:hover {
+    cursor: pointer;
+    color: #00bee0;
+    margin-top: 50%
+}
+
+i.huge.angle.left.icon {
+    margin-top: 50%;
+}
+
+i.huge.angle.left.icon:hover {
+    cursor: pointer;
+    color: #00bee0;
+    margin-top: 50%
+}
+
+.carousel-item {
+    width: 90%;
+    height: 100%;
+    /* This centers the item */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    display: none;
+}
+
+.active .carousel-item {
+    width: 100%;
+    height: 100%;
+    /* This centers the item */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel.slide {
+    margin-top: 2em;
+    width: 90%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.carousel-indicators {
+    padding-top: 12em !important;
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100% !important;
+}
+
+/* Automatically hide the layers icon from the map; we want to choose this via dark/light mode */
+
+.leaflet-control-layers.leaflet-control {
+    display: none !important;
+}

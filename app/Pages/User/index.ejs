@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>OccupancyDB: Your Profile</title>
+    <link rel="stylesheet" type="text/css" href="/Libraries/semantic/out/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/Pages/User/index.css">
+    <script src="/Libraries/jquery-3.1.1.js"></script>
+    <script src="/Libraries/semantic/out/semantic.min.js"></script>
+    <!-- Always put our JS last so that if our JS calls something from another JS file, it's already available -->
+    <script src="/Pages/User/index.js"></script>
+</head>
+
+<body onload="init()" style="display: none;">
+    <div class="ui container">
+        <!-- Following Menu -->
+        <div class="ui top fixed menu">
+            <div class="active red item" onclick="location.href='logout'">
+                <i class="ui red sign out alternate icon"></i>Log Out
+            </div>
+            <div class="item" onclick="location.href='/'">
+                <i class="ui map outline icon"></i> Occupancy Toggler
+            </div>
+            <div class="right item">
+                <div class="ui slider checkbox" style="margin-top: .5em;">
+                    <label>Dark Mode</label>
+                    <input name="darkmode" type="checkbox">
+                </div>
+            </div>
+        </div>
+        <div class="ui middle aligned center aligned grid">
+            <div class="row">
+                <div class="column">
+                    <h2 class="ui header">
+                        <div class="content">
+                            Your Account
+                        </div>
+                    </h2>
+                    <h3 class="ui header">
+                        E-Mail: <%= user.email %>
+                    </h3>
+                    <p>(This cannot be changed)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2 class="ui header">
+                        <div class="content">
+                            Change Password
+                        </div>
+                    </h2>
+                    <form class="ui large form" action="/change-password" method="post">
+                        <div class="ui stacked segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="unlock icon"></i>
+                                    <input type="password" name="old_pass" placeholder="Old Password">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" name="new_pass" placeholder="New Password">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" name="new_pass_conf" placeholder="(Confirm)">
+                                </div>
+                            </div>
+                            <div class="ui fluid large submit button">Change Password</div>
+                        </div>
+                        <div class="ui error message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

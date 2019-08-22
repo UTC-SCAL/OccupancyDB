@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>OccupancyDB</title>
+    <link rel="stylesheet" type="text/css" href="/Libraries/semantic/out/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/Pages/Home/index.css">
+    <script src="/Libraries/jquery-3.1.1.js"></script>
+    <script src="/Libraries/semantic/out/semantic.min.js"></script>
+    <!-- Always put our JS last so that if our JS calls something from another JS file, it's already available -->
+    <script src="/Pages/Home/index.js"></script>
+</head>
+
+<body onload="init()" style="display: none">
+
+    <!--  Menu -->
+    <div class="ui top menu">
+        <!-- Conditionally draw the account item -->
+        <% if (user) { %>
+        <div class="item" onclick="location.href='/user'">
+            <i class="ui large user circle icon"></i> <%= user.email %>
+        </div>
+        <% } else { %>
+        <div class="item" onclick="location.href='/login?origin=/'">
+            <i class="ui large user icon"></i> Log In
+        </div>
+        <% } %>
+        <div class="active teal item" onclick="location.href='/'">
+            <i class="ui map outline icon"></i> Occupancy Toggler
+        </div>
+        <div class="right item">
+            <div class="ui slider checkbox" style="margin-top: .5em;">
+                <label>Dark Mode</label>
+                <input name="darkmode" type="checkbox">
+            </div>
+        </div>
+    </div>
+
+    <div class="ui container" style="height: 100%; display: flex;">
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div class="ui three column grid">
+                <div class="row">
+                    <div class="ui column" style="transform: scale(2)">
+                        <p>House is Empty</p>
+                    </div>
+                    <div class="ui center aligned column"style="transform: scale(2)">
+                        <div class="ui toggle checkbox">
+                            <input name="darkmode" type="checkbox">
+
+                            <script>
+                                $(".ui.toggle.checkbox").checkbox({
+                                    onChecked: () => {
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open("POST", "/home", true);
+                                        xhr.setRequestHeader('Content-Type', 'application/json');
+                                        xhr.send();
+                                    },
+                                    onUnchecked: () => {
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open("POST", "/away", true);
+                                        xhr.setRequestHeader('Content-Type', 'application/json');
+                                        xhr.send();
+                                    }
+                                });
+
+                                if (<%- status === "home" %>) {
+                                    $(".ui.toggle.checkbox").checkbox('set checked');
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <div class="ui column"style="transform: scale(2)">
+                        <p style="text-align: right;">House is occupied</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="ui column">
+                    </div>
+                    <div class="ui  center aligned column">
+                        <div class="ui error message" style="display: none;"></div>
+                    </div>
+                    <div class="ui column">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
