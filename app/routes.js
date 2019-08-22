@@ -34,8 +34,17 @@ module.exports = (app, passport) => {
 
     app.get('/user', (req, res) => {
         if (req.isAuthenticated()) {
+            var statusHistory = [];
+            req.user.statusHistory.forEach((element) => {
+                statusHistory.push({
+                    status: element.status,
+                    timestamp: element.timestamp
+                });
+            });
+
             res.render(path.join(__dirname + "/Pages/User/index.ejs"), {
-                user: req.user
+                user: req.user,
+                statusHistory: statusHistory
             });
         } else {
             res.redirect(`/login?origin=${req.originalUrl}`);

@@ -78,3 +78,12 @@ $(document)
                 }
             });
     });
+
+
+function drawData(rawData) {
+    const element = document.getElementById("docs");
+    element.innerHTML += "<br>";
+    rawData.forEach((e) => {
+        element.innerHTML += e.status + " : " + e.timestamp + "<br>";
+    });
+}
