@@ -1,4 +1,10 @@
-
+function toggleStatus(element) {
+    if (element.innerText === "House is Empty") {
+        element.innerText = "House is Occupied";
+    } else {
+        element.innerText = "House is Empty";
+    }
+}
 function init() {
     $(".ui.slider.checkbox").checkbox({
         onChecked: () => {
@@ -11,6 +17,7 @@ function init() {
         onUnchecked: () => {
             window.localStorage.setItem("darkmode", 'no');
             $(".ui").removeClass("inverted");
+            $("body").removeClass("inverted");
             $(".ui.slider.checkbox").checkbox('set unchecked');
         }
     });
