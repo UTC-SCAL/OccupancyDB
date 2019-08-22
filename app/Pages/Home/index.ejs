@@ -28,7 +28,7 @@
         </div>
         <% } %>
         <div class="active teal item" onclick="location.href='/'">
-            <i class="ui map outline icon"></i> Occupancy Toggler
+            <i class="ui home icon"></i> Main
         </div>
         <div class="right item">
             <div class="ui slider checkbox" style="margin-top: .5em;">
@@ -38,52 +38,14 @@
         </div>
     </div>
 
-    <div class="ui container" style="height: 100%; display: flex;">
+    <div class="ui container" style="height: 90%; display: flex;">
         <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <div class="ui three column grid">
-                <div class="row">
-                    <div class="ui column" style="transform: scale(2)">
-                        <p>House is Empty</p>
-                    </div>
-                    <div class="ui center aligned column"style="transform: scale(2)">
-                        <div class="ui toggle checkbox">
-                            <input name="darkmode" type="checkbox">
-
-                            <script>
-                                $(".ui.toggle.checkbox").checkbox({
-                                    onChecked: () => {
-                                        var xhr = new XMLHttpRequest();
-                                        xhr.open("POST", "/home", true);
-                                        xhr.setRequestHeader('Content-Type', 'application/json');
-                                        xhr.send();
-                                    },
-                                    onUnchecked: () => {
-                                        var xhr = new XMLHttpRequest();
-                                        xhr.open("POST", "/away", true);
-                                        xhr.setRequestHeader('Content-Type', 'application/json');
-                                        xhr.send();
-                                    }
-                                });
-
-                                if (<%- status === "home" %>) {
-                                    $(".ui.toggle.checkbox").checkbox('set checked');
-                                }
-                            </script>
-                        </div>
-                    </div>
-                    <div class="ui column"style="transform: scale(2)">
-                        <p style="text-align: right;">House is occupied</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="ui column">
-                    </div>
-                    <div class="ui  center aligned column">
-                        <div class="ui error message" style="display: none;"></div>
-                    </div>
-                    <div class="ui column">
-                    </div>
-                </div>
+            <div class="ui huge button" onclick="toggleStatus(this)">
+                <% if (status === "home") { %>
+                House is Empty
+                <% } else { %>
+                House is Occupied
+                <% } %>
             </div>
         </div>
     </div>

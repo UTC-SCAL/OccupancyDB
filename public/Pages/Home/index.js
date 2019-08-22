@@ -1,7 +1,15 @@
 function toggleStatus(element) {
     if (element.innerText === "House is Empty") {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/away", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send();
         element.innerText = "House is Occupied";
     } else {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/home", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send();
         element.innerText = "House is Empty";
     }
 }
