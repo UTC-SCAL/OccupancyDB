@@ -13,7 +13,8 @@
     <script src="/Pages/User/index.js"></script>
 </head>
 
-<body onload="init()" style="display: none;">
+<body onload="init(<%- (darkMode) %>)" style="display: none;">
+    <div class="color" style="display: none"><%= color %></div>
     <div class="ui container">
         <!-- Following Menu -->
         <div class="ui top fixed menu">
@@ -22,12 +23,6 @@
             </div>
             <div class="item" onclick="location.href='/'">
                 <i class="ui home icon"></i> Main
-            </div>
-            <div class="right item">
-                <div class="ui slider checkbox" style="margin-top: .5em;">
-                    <label>Dark Mode</label>
-                    <input name="darkmode" type="checkbox">
-                </div>
             </div>
         </div>
         <div class="ui middle aligned center aligned grid">
@@ -71,10 +66,74 @@
                                     <input type="password" name="new_pass_conf" placeholder="(Confirm)">
                                 </div>
                             </div>
-                            <div class="ui fluid large submit button">Change Password</div>
+                            <div class="ui fluid large submitColor button">Change Password</div>
                         </div>
                         <div class="ui error message"></div>
                     </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <h2 class="ui header">
+                        <div class="content">
+                            Your Preferences
+                        </div>
+                    </h2>
+                    <div class="ui grid">
+                        <div class="centered row">
+                            <h3 class="ui header">
+                                Dark / Light Mode
+                            </h3>
+                        </div>
+                        <div class="centered row">
+                            <div class="ui black basic button" onclick=submitModePref(this)>
+                                Dark
+                            </div>
+                            <div class="ui white basic button" onclick=submitModePref(this)>
+                                Light
+                            </div>
+                        </div>
+                        <div class="centered row">
+                            <h3 class="ui header">
+                                Color Preference
+                            </h3>
+                        </div>
+                        <div class="centered row">
+                            <div class="ui red basic button" onclick="submitColor(this)">
+                                Red
+                            </div>
+                            <div class="ui orange basic button" onclick="submitColor(this)">
+                                Orange
+                            </div>
+                            <div class="ui yellow basic button" onclick="submitColor(this)">
+                                Yellow
+                            </div>
+                            <div class="ui olive basic button" onclick="submitColor(this)">
+                                Olive
+                            </div>
+                            <div class="ui green basic button" onclick="submitColor(this)">
+                                Green
+                            </div>
+                            <div class="ui teal basic button" onclick="submitColor(this)">
+                                Teal
+                            </div>
+                            <div class="ui blue basic button" onclick="submitColor(this)">
+                                Blue
+                            </div>
+                            <div class="ui violet basic button" onclick="submitColor(this)">
+                                Violet
+                            </div>
+                            <div class="ui purple basic button" onclick="submitColor(this)">
+                                Purple
+                            </div>
+                            <div class="ui pink basic button" onclick="submitColor(this)">
+                                Pink
+                            </div>
+                            <div class="ui grey basic button" onclick="submitColor(this)">
+                                Grey
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -86,7 +145,7 @@
                     </h2>
                     <pre id="docs">
                         <script>
-                            var status_parsed = <%- JSON.stringify(statusHistory) %> ;
+                            var status_parsed = <% - JSON.stringify(statusHistory) %> ;
                             drawData(status_parsed);
                         </script>
                     </pre>

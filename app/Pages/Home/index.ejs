@@ -13,7 +13,7 @@
     <script src="/Pages/Home/index.js"></script>
 </head>
 
-<body onload="init()" style="display: none">
+<body onload="init(<%- (darkMode) %>)" style="display: none">
 
     <!--  Menu -->
     <div class="ui top menu">
@@ -27,20 +27,14 @@
             <i class="ui large user icon"></i> Log In
         </div>
         <% } %>
-        <div class="active teal item" onclick="location.href='/'">
+        <div class="active <%= color %> item" onclick="location.href='/'">
             <i class="ui home icon"></i> Main
-        </div>
-        <div class="right item">
-            <div class="ui slider checkbox" style="margin-top: .5em;">
-                <label>Dark Mode</label>
-                <input name="darkmode" type="checkbox">
-            </div>
         </div>
     </div>
 
     <div class="ui container" style="height: 90%; display: flex;">
         <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <div class="ui huge button" onclick="toggleStatus(this)">
+            <div class="ui huge <%= color %> button" onclick="toggleStatus(this)">
                 <% if (status === "home") { %>
                 House is Empty
                 <% } else { %>

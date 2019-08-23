@@ -9,7 +9,8 @@ var userSchema = new mongoose.Schema({
         type: String
     },
     status: {
-        type: String
+        type: String,
+        default: "home"
     },
     statusHistory: {
         type: [
@@ -17,7 +18,16 @@ var userSchema = new mongoose.Schema({
                 timestamp: Date,
                 status: String
             }
-        ]
+        ],
+        default: []
+    },
+    colorPreference: {
+        type: String,
+        default: "grey"
+    },
+    darkPreference: {
+        type: Boolean,
+        default: false
     }
 });
 

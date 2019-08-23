@@ -7,7 +7,9 @@ module.exports = (app, passport) => {
         if (req.isAuthenticated()) {
             res.render(path.join(__dirname + "/Pages/Home/index.ejs"), {
                 user: req.user,
-                status: req.user.status
+                status: req.user.status,
+                color: req.user.colorPreference,
+                darkMode: req.user.darkPreference
             });
         } else {
             res.redirect("/login");
@@ -44,7 +46,9 @@ module.exports = (app, passport) => {
 
             res.render(path.join(__dirname + "/Pages/User/index.ejs"), {
                 user: req.user,
-                statusHistory: statusHistory
+                statusHistory: statusHistory,
+                color: req.user.colorPreference,
+                darkMode: req.user.darkPreference
             });
         } else {
             res.redirect(`/login?origin=${req.originalUrl}`);
@@ -61,6 +65,20 @@ module.exports = (app, passport) => {
             } else {
                 res.redirect("/");
             }
+        }
+    );
+
+    app.post("/change-colors",
+        (req, res) => {
+            UserDetails.findOne({
+                "email": req.user.email
+            }, (err, user) => {
+                if(!err && user) {
+                    user.colorPreference = req.body.color_pref;
+                    user.darkPreference = req.body.dark_pref;
+                    user.save();
+                }
+            });
         }
     );
 
