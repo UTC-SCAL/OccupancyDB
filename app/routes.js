@@ -16,6 +16,7 @@ module.exports = (app, passport) => {
         }
     });
 
+
     app.get('/login', (req, res) => {
         if (req.isAuthenticated()) {
             res.redirect("/user");
@@ -25,6 +26,11 @@ module.exports = (app, passport) => {
         }
         res.sendFile(path.join(__dirname + "/Pages/Login/index.html"));
     });
+
+    app.get('/register', (req, res) => {
+        res.sendFile(path.join(__dirname + "/Pages/Register/index.html"));
+    });
+
 
     app.get('/logout', (req, res) => {
         req.logout();
@@ -73,7 +79,7 @@ module.exports = (app, passport) => {
             UserDetails.findOne({
                 "email": req.user.email
             }, (err, user) => {
-                if(!err && user) {
+                if (!err && user) {
                     user.colorPreference = req.body.color_pref;
                     user.darkPreference = req.body.dark_pref;
                     user.save();
@@ -128,6 +134,51 @@ module.exports = (app, passport) => {
                     } else {
                         res.redirect("/user?wrong_pass");
                     }
+                }
+            });
+        }
+    );
+
+    app.post("/register",
+        (req, res) => {
+            UserDetails.findOne({
+                "email": req.body.email
+            }, function (err, user) {
+                if (err) {
+                    return callback(err);
+                }
+                if (user) {
+                    res.redirect("/register?exists")
+                } else {
+                    var newUser = new UserDetails();
+                    newUser.email = req.body.email;
+                    newUser.password = newUser.generateHash(req.body.password);
+                    newUser.save(function (err) {
+                        if (err) {
+                            res.redirect("/register?failure");
+                        }
+                        else {
+                            req.login(newUser, (err) => {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    res.redirect("/");
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    );
+
+    app.post("/delete-account",
+        (req, res) => {
+            UserDetails.deleteOne({
+                _id: req.user._id
+            }, function (err) {
+                if (!err) {
+                    res.redirect("/");
                 }
             });
         }

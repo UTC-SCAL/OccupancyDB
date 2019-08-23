@@ -56,6 +56,7 @@ passport.use(new LocalStrategy({
 passport.serializeUser(function (user, callback) {
     callback(null, user.id);
 });
+
 passport.deserializeUser(function (id, callback) {
     UserDetails.findById(id, function (err, user) {
         callback(err, user);

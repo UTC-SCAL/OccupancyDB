@@ -151,6 +151,29 @@
                     </pre>
                 </div>
             </div>
+            <div class="row">
+                <div class="column">
+                    <button class="ui big red button" onclick="$('.ui.modal').modal('show');">
+                        <i class="ui eraser icon"></i> Delete Your Account
+                    </button>
+                    <div class="ui modal">
+                        <i class="close icon"></i>
+                        <div class="ui header">
+                            Account Deletion Confirmation
+                        </div>
+                        <h3 class="ui description" style="text-align: center">
+                            Do you really want to delete your account?
+                        </h3>
+                        <form action="/delete-account" method="post" style="padding-bottom: 1rem;">
+                            <center>
+                                <button class="ui big red button" type="submit">
+                                    <i class="ui eraser icon"></i> Delete Your Account Permanently
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

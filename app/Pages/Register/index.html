@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-    <title>OccupancyDB: Login</title>
+    <title>OccupancyDB: Register</title>
     <link rel="stylesheet" type="text/css" href="/Libraries/semantic/out/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="/Pages/Login/index.css">
+    <link rel="stylesheet" type="text/css" href="/Pages/Register/index.css">
     <script src="/Libraries/jquery-3.1.1.js"></script>
     <script src="/Libraries/semantic/out/semantic.min.js"></script>
     <!-- Always put our JS last so that if our JS calls something from another JS file, it's already available -->
-    <script src="/Pages/Login/index.js"></script>
+    <script src="/Pages/Register/index.js"></script>
 </head>
 
 <body onload="init()" style="display: none;">
@@ -18,7 +18,7 @@
     <div class="ui container">
         <!-- Following Menu -->
         <div class="ui top fixed menu">
-            <div class="active teal item" onclick="location.href='/login'">
+            <div class="item" onclick="location.href='/login'">
                 <i class="ui large user icon"></i> Log In
             </div>
             <div class="item" onclick="location.href='/'">
@@ -33,17 +33,15 @@
         </div>
         <div class="ui middle aligned center aligned grid" id="login">
             <div class="column">
-                <h2 class="ui image header">
-                    <div class="content">
-                        Account Login
-                    </div>
-                </h2>
-                <form class="ui large form" action="/login" method="post">
+                <h3 class="ui center aligned header">
+                    <div class="content">Create Account</div>
+                </h3>
+                <form class="ui large form" action="/register" method="post">
                     <div class="ui stacked segment">
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user icon"></i>
-                                <input type="text" name="email" placeholder="E-mail address" id="email">
+                                <input type="text" name="email" placeholder="E-mail address">
                             </div>
                         </div>
                         <div class="field">
@@ -52,12 +50,16 @@
                                 <input type="password" name="password" placeholder="Password">
                             </div>
                         </div>
-                        <div class="ui fluid large submit button">Log In</div>
-                        <h4 class="ui header">Don't have an account?</h4>
-                        <div class="ui fluid large button" onclick="location.href='/Register'">Register</div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password_conf" placeholder="Confirm Password">
+                            </div>
+                        </div>
+                        <div class="ui fluid large submit button">Register</div>
                     </div>
 
-                    <div class="ui error message"></div>
+                    <div class="ui error message" id="message"></div>
                 </form>
             </div>
         </div>

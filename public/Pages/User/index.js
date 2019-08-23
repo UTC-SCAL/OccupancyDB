@@ -16,6 +16,7 @@ function init(isDarkMode) {
         $("body").addClass("inverted");
     }
 
+    $('.ui.modal').modal();
     $(".ui.middle.aligned.center.aligned.grid").css("margin-top", $(".ui.top.fixed.menu").height());
     $("body").show();
 
