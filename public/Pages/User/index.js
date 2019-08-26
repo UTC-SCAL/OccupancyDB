@@ -4,7 +4,7 @@ var lastColorModeElement;
 function init(isDarkMode) {
     // Load up the last selected color
     var currentColor = document.getElementsByClassName("color")[0].innerHTML;
-    lastColorElement = document.getElementsByClassName("ui " + currentColor + " button")[0];
+    lastColorElement = document.querySelector(".ui." + currentColor + ".button:not(.submit)");
     $(lastColorElement).removeClass("basic");
 
     // Load up the last selected light/dark mode
@@ -38,6 +38,13 @@ function submitModePref(element) {
         "dark_pref": lastColorModeElement.innerText.includes("Dark"),
         "color_pref": lastColorElement.innerText.toLowerCase()
     };
+    if(lastColorModeElement.innerText.includes("Dark")) {
+        $(".ui").addClass("inverted");
+        $("body").addClass("inverted");
+    }else {
+        $(".ui").removeClass("inverted");
+        $("body").removeClass("inverted");
+    }
     // Send the request
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/change-colors", true);
@@ -49,12 +56,14 @@ function submitColor(element) {
     // Visual update
     $(lastColorElement).addClass("basic");
     $(element).removeClass("basic");
+    $(".ui.submit.button").removeClass(lastColorElement.innerText.toLowerCase());
     lastColorElement = element;
     // Prepare the request
     var reqBody = {
         "dark_pref": lastColorModeElement.innerText.includes("Dark"),
         "color_pref": lastColorElement.innerText.toLowerCase()
     };
+    $(".ui.submit.button").addClass(lastColorElement.innerText.toLowerCase());
     // Send the request
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/change-colors", true);
