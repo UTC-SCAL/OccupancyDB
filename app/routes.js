@@ -1,5 +1,6 @@
 const path = require('path');
 const UserDetails = require("./user");
+const csv = require("express-csv");
 
 module.exports = (app, passport) => {
     /* Define possible endpoints */
@@ -52,10 +53,24 @@ module.exports = (app, passport) => {
 
             res.render(path.join(__dirname + "/Pages/User/index.ejs"), {
                 user: req.user,
-                statusHistory: statusHistory,
                 color: req.user.colorPreference,
                 darkMode: req.user.darkPreference
             });
+        } else {
+            res.redirect(`/login?origin=${req.originalUrl}`);
+        }
+    });
+
+    app.get('/user/download', (req, res) => {
+        if (req.isAuthenticated()) {
+            var statusHistory = [{status: "Status", timestamp: "Timestamp"}];
+            req.user.statusHistory.forEach((element) => {
+                statusHistory.push({
+                    status: element.status,
+                    timestamp: element.timestamp
+                });
+            });
+            res.csv(statusHistory);
         } else {
             res.redirect(`/login?origin=${req.originalUrl}`);
         }

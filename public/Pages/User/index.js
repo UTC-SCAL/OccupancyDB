@@ -56,14 +56,18 @@ function submitColor(element) {
     // Visual update
     $(lastColorElement).addClass("basic");
     $(element).removeClass("basic");
+    $(".ui.submit.button").addClass(element.innerText.toLowerCase());
     $(".ui.submit.button").removeClass(lastColorElement.innerText.toLowerCase());
-    lastColorElement = element;
     // Prepare the request
     var reqBody = {
         "dark_pref": lastColorModeElement.innerText.includes("Dark"),
-        "color_pref": lastColorElement.innerText.toLowerCase()
+        "color_pref": element.innerText.toLowerCase()
     };
-    $(".ui.submit.button").addClass(lastColorElement.innerText.toLowerCase());
+    document.querySelectorAll(".ui.button:not(.big):not(.black):not(.white)").forEach((e) => {
+        $(e).removeClass(lastColorElement.innerText.toLowerCase());
+        $(e).addClass(element.innerText.toLowerCase());
+    });
+    lastColorElement = element;
     // Send the request
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/change-colors", true);
@@ -111,11 +115,3 @@ $(document)
             });
     });
 
-
-function drawData(rawData) {
-    const element = document.getElementById("docs");
-    element.innerHTML += "<br>";
-    rawData.forEach((e) => {
-        element.innerHTML += e.status + " : " + e.timestamp + "<br>";
-    });
-}

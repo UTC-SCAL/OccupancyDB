@@ -140,15 +140,12 @@
                 <div class="column">
                     <h2 class="ui header">
                         <div class="content">
-                            Your Current Data
+                            <i class="file excel icon"></i>Your Data
                         </div>
                     </h2>
-                    <pre id="docs">
-                        <script>
-                            var status_parsed = <%- JSON.stringify(statusHistory) %> ;
-                            drawData(status_parsed);
-                        </script>
-                    </pre>
+                    <div class="ui <%= color %> button" onclick = "location.href('/user/download')">
+                        <i class="download icon"></i>Download as CSV
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -167,7 +164,7 @@
                         <form action="/delete-account" method="post" style="padding-bottom: 1rem;">
                             <center>
                                 <button class="ui big red button" type="submit">
-                                    <i class="ui eraser icon"></i> Delete Your Account Permanently
+                                    <i class="eraser icon"></i> Delete Your Account Permanently
                                 </button>
                             </center>
                         </form>
