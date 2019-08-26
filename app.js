@@ -1,5 +1,7 @@
 /* Basic ExpressJS init */
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 /* This allows the form to get sent to Passport correctly */
@@ -66,5 +68,26 @@ passport.deserializeUser(function (id, callback) {
 /* Route declaration */
 require("./app/routes")(app, passport);
 
-/* Deploy web server */
-app.listen(port, () => console.log("Listening on port " + port));
+/* Cert stuff */
+try {
+    const privateKey = fs.readFileSync('/etc/letsencrypt/live/research.utccuip.com/privkey.pem', 'utf8');
+    const certificate = fs.readFileSync('/etc/letsencrypt/live/research.utccuip.com/cert.pem', 'utf8');
+    const ca = fs.readFileSync('/etc/letsencrypt/live/research.utccuip.com/chain.pem', 'utf8');
+
+    const credentials = {
+        key: privateKey,
+        cert: certificate,
+        ca: ca
+    };
+
+    const httpsServer = https.createServer(credentials, app);
+    /* Deploy web server */
+    httpsServer.listen(port, () => {
+        console.log("HTTPS listening on port " + port);
+    });
+} catch (err) {
+    console.log("Could not find certs - assuming dev environment.");
+    app.listen(port, () => console.log("Debug listening on port " + port));
+}
+
+
