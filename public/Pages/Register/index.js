@@ -1,30 +1,4 @@
 function init() {
-    $(".ui.slider.checkbox").checkbox({
-        onChecked: () => {
-            window.localStorage.setItem("darkmode", 'yes');
-            $(".ui").addClass("inverted");
-            $("body").addClass("inverted");
-            $(".ui.slider.checkbox").checkbox('set checked');
-        },
-        onUnchecked: () => {
-            window.localStorage.setItem("darkmode", 'no');
-            $(".ui").removeClass("inverted");
-            $("body").removeClass("inverted");
-            $(".ui.slider.checkbox").checkbox('set unchecked');
-        }
-    });
-    var mode = window.localStorage.getItem("darkmode");
-    if (mode === undefined || mode === null) {
-        window.localStorage.setItem("darkmode", 'no');
-        mode = false;
-    } else {
-        if (mode === "yes") {
-            $(".ui").addClass("inverted");
-            $("body").addClass("inverted");
-            $(".ui.slider.checkbox").checkbox('set checked');
-        }
-    }
-
     const hasErrored = location.href.includes("error");
     const acctExists = location.href.includes("exists")
     if (hasErrored) {
@@ -38,7 +12,6 @@ function init() {
     }
 
     $("body").show();
-
     // Auto-select the input field
     $("#email").select();
 }

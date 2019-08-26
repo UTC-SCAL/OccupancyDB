@@ -18,6 +18,7 @@ function init(isDarkMode) {
 
     $('.ui.modal').modal();
     $(".ui.middle.aligned.center.aligned.grid").css("margin-top", $(".ui.top.fixed.menu").height());
+    $('.ui.dropdown').dropdown({on: 'hover'});
     $("body").show();
 
     const wrong_pass = location.href.includes("?wrong_pass");

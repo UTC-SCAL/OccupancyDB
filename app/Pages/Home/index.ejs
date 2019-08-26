@@ -18,15 +18,21 @@
     <!--  Menu -->
     <div class="ui top menu">
         <!-- Conditionally draw the account item -->
-        <% if (user) { %>
-        <div class="item" onclick="location.href='/user'">
-            <i class="ui large user circle icon"></i> <%= user.email %>
-        </div>
-        <% } else { %>
-        <div class="item" onclick="location.href='/login?origin=/'">
-            <i class="ui large user icon"></i> Log In
-        </div>
-        <% } %>
+        <a class="ui dropdown item">
+            <i class="ui user circle icon"></i>
+            <%= user.email %>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item" onclick="location.href='/user'">
+                    <i class="settings icon"></i> Account Info & Settings
+                </div>
+                <div class="item" onclick="location.href='/logout'">
+                    <span style="color: #db2828 !important">
+                        <i class="red sign out icon"></i>Log Out
+                    </span>
+                </div>
+            </div>
+        </a>
         <div class="active <%= color %> item" onclick="location.href='/'">
             <i class="ui home icon"></i> Main
         </div>

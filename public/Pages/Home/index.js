@@ -14,7 +14,8 @@ function toggleStatus(element) {
     }
 }
 function init(isDarkMode) {
-    if(isDarkMode){
+
+    if (isDarkMode) {
         $(".ui").addClass("inverted");
         $("body").addClass("inverted");
     }
@@ -23,6 +24,9 @@ function init(isDarkMode) {
         $(".ui.error.message").text("There was a critical error");
         $(".ui.error.message").show();
     }
+
+
+    $('.ui.dropdown').dropdown({on: 'hover'});
     // Reveal the body now for better appearance
     $("body").show();
 }
