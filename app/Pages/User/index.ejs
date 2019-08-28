@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>OccupancyDB: Your Profile</title>
     <link rel="stylesheet" type="text/css" href="/Libraries/semantic/out/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="/Pages/User/index.css">
+    <link rel="stylesheet" type="text/css" href="/Pages/general.css">
+    <link rel="stylesheet" type="text/css" href="/Pages/User/overrides.css">
     <script src="/Libraries/jquery-3.1.1.js"></script>
     <script src="/Libraries/semantic/out/semantic.min.js"></script>
     <!-- Always put our JS last so that if our JS calls something from another JS file, it's already available -->
@@ -23,7 +24,7 @@
                 <i class="ui user circle icon"></i>
                 <%= user.email %>
                 <i class="dropdown icon"></i>
-                <div class="menu">
+                <div class="ui menu">
                     <div class="active item" onclick="location.href='/user'">
                         <i class="settings icon"></i> Account Info & Settings
                     </div>
@@ -156,7 +157,7 @@
                             <i class="file excel icon"></i>Your Data
                         </div>
                     </h2>
-                    <div class="ui <%= color %> button" onclick="location.href = '/user/download'">
+                    <div class="ui <%= color %> button" id="download-button" onclick="location.href = '/user/download'">
                         <i class="download icon"></i>Download as CSV
                     </div>
                 </div>

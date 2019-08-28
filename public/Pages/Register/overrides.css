@@ -1,0 +1,10 @@
+.column {
+    max-width: 33vw;
+    width: 33vw;
+}
+
+body {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+}

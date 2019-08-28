@@ -1,0 +1,40 @@
+/* Hide that weird double chin */
+
+.ui.stacked.segment::after {
+    display: None;
+}
+
+body.inverted {
+    color: #eee;
+    background-color: #252525
+}
+
+.ui.menu {
+    margin-bottom: 0px !important;
+    border-radius: 0 !important;
+}
+
+.item {
+    cursor: pointer;
+}
+
+.item:not(.ui.menu.inverted.transition.visible .active.item):not():hover {
+    -webkit-filter: invert(30%);
+    filter: invert(30%);
+}
+
+/* Inverted dropdown menu */
+
+.ui.menu.transition.inverted {
+    background-color: #353535 !important;
+}
+
+/* Inverted dropdown menu items */
+
+.ui.menu.inverted.transition.visible .active.item, .ui.menu.inverted.transition.visible .item, .ui.menu.inverted.transition.animating .active.item, .ui.menu.inverted.transition.animating .item {
+    color: #dddddd !important;
+}
+
+.ui.menu.inverted.transition.visible .active.item:hover, .ui.menu.inverted.transition.visible .item:hover, .ui.menu.inverted.transition.animating .active.item:hover, .ui.menu.inverted.transition.animating .item:hover {
+    color: #dedede !important;
+}

@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>OccupancyDB</title>
     <link rel="stylesheet" type="text/css" href="/Libraries/semantic/out/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="/Pages/Home/index.css">
+    <link rel="stylesheet" type="text/css" href="/Pages/general.css">
+    <link rel="stylesheet" type="text/css" href="/Pages/Home/overrides.css">
     <script src="/Libraries/jquery-3.1.1.js"></script>
     <script src="/Libraries/semantic/out/semantic.min.js"></script>
     <!-- Always put our JS last so that if our JS calls something from another JS file, it's already available -->
     <script src="/Pages/Home/index.js"></script>
+
 </head>
 
 <body onload="init(<%- (darkMode) %>)" style="display: none">
@@ -22,7 +24,7 @@
             <i class="ui user circle icon"></i>
             <%= user.email %>
             <i class="dropdown icon"></i>
-            <div class="menu">
+            <div class="ui menu">
                 <div class="item" onclick="location.href='/user'">
                     <i class="settings icon"></i> Account Info & Settings
                 </div>

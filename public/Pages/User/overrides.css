@@ -1,0 +1,28 @@
+.ui.container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.ui.modal.inverted.transition.visible.active, .ui.modal.inverted.transition.animating {
+    background-color: #303030 !important;
+    color: #eeeeee !important;
+}
+
+.ui.modal.inverted>.icon:first-child+* {
+    background-color: #282828 !important;
+    color: #eeeeee !important;
+}
+
+.ui.stacked.segment.inverted {
+    background-color: #252525 !important;
+}
+
+.ui.stacked.segment  {
+    width: 33vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    display: flex;
+}

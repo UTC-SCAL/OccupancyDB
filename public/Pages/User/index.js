@@ -64,10 +64,8 @@ function submitColor(element) {
         "dark_pref": lastColorModeElement.innerText.includes("Dark"),
         "color_pref": element.innerText.toLowerCase()
     };
-    document.querySelectorAll(".ui.button:not(.big):not(.black):not(.white)").forEach((e) => {
-        $(e).removeClass(lastColorElement.innerText.toLowerCase());
-        $(e).addClass(element.innerText.toLowerCase());
-    });
+    $("#download-button").removeClass(lastColorElement.innerText.toLowerCase());
+    $("#download-button").addClass(element.innerText.toLowerCase());
     lastColorElement = element;
     // Send the request
     var xhr = new XMLHttpRequest();
